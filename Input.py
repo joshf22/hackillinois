@@ -1,7 +1,6 @@
 import csv
 import stockstats
-import pandas
-from pandas import Dataframe, read_csv
+import pandas as pd
 stuff = input("Start year: ")
 Startyear = int(stuff)
 while (Startyear > 2020):
@@ -53,6 +52,7 @@ Location = r'GE.csv'
 df = pd.read_csv(Location, header=None)
 df
 
+stock = StockDataFrame.retype(pd.read_csv('GE.csv'))
 
 
 
