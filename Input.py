@@ -1,4 +1,6 @@
 import csv
+import stockstats
+from pandas import Dataframe, read_csv
 stuff = input("Start year: ")
 Startyear = int(stuff)
 while (Startyear > 2020):
@@ -45,3 +47,12 @@ while (Endday > 31) or (Endday < 1) or ((Endyear == Startyear) and (Endmonth == 
 
 print ("Getting data from {year}-{month}-{day}" .format(year=Startyear, month=Startmonth, day=startday))
 print ("to {year}-{month}-{day}" .format(year=Endyear, month=Endmonth, day=Endday))
+
+Location = r'GE.csv'
+df = pd.read_csv(Location, header=None)
+df
+
+stock = StockDataFrame.retype(pd.read_csv('GE.csv'))
+
+
+
