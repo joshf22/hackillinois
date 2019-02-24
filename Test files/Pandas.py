@@ -26,9 +26,9 @@ print("\n")
 comb.rename(columns = {'':'Date', 'kdjk_14_x':'K','kdjk_14_y':'D'}, inplace=True)
 print (comb)
 
-%matplotlib inline
+ax = comb.plot(figsize=(rows , 10), title="K and D values over the time period")
+ax.set_ylabel("Value")
 
 
-comb["K"].plot(grid=True)
-plt.show()
+plt.savefig("plot.png")
 
