@@ -9,13 +9,13 @@ start = dt.datetime(2018,12,10)
 end = dt.datetime(2019,2,22)
 
 ticker = input("Enter a ticker: ")
-year = int(input('Enter a year'))
-month = int(input('Enter a month'))
-day = int(input('Enter a day'))
+year = int(input('Enter a year: '))
+month = int(input('Enter a month: '))
+day = int(input('Enter a day: '))
 date1 = dt.date(year, month, day)
-year = int(input('Enter a year'))
-month = int(input('Enter a month'))
-day = int(input('Enter a day'))
+year = int(input('Enter a year: '))
+month = int(input('Enter a month: '))
+day = int(input('Enter a day: '))
 date2 = dt.date(year, month, day)
 print (ticker)
 
@@ -37,15 +37,25 @@ print("\n")
 comb.rename(columns = {'':'Date', 'kdjk_14_x':'K','kdjk_14_y':'D'}, inplace=True)
 print (comb)
 fig, axes = plt.subplots (nrows=2,ncols=1)
-ax = comb.plot(figsize=(10 , 10),ax=axes[1], title="K and D values over the time period")
+ax = comb.plot(figsize=(10 , 10),ax=axes[1], title="K and D values over the time period",)
+ax.axhline(y=20,color ='grey', linestyle="--", fillstyle='bottom')
+ax.axhline(y=80,color ='grey', linestyle="--", fillstyle='bottom')
 ax.set_ylabel("Value")
 ax.set_ylim([0,100])
 ax.patch.set_facecolor('black')
 ax.patch.set_alpha(.2)
 
-ax1 = f.plot(y="close",ax=axes[0])
+if (k.iloc[-1]+d.iloc[-1] <= 40):
+    ax1 = f.plot(y="close",ax=axes[0], color = "green", title="{stock} stock price" .format(stock=ticker))
+if (k.iloc[-1]+d.iloc[-1] >= 160):
+    ax1 = f.plot(y="close",ax=axes[0], color = "red",  title="{stock} stock price" .format(stock=ticker))
+else:
+    ax1 = f.plot(y="close",ax=axes[0], color = "black",  title="{stock} stock price" .format(stock=ticker))
+
+
 ax1.patch.set_facecolor('black')
 ax1.patch.set_alpha(.2)
+#ax1.figtext('green=Buy, red=Sell, Black=neutral')
 
 
 plt.savefig("output/plot.png")
