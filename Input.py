@@ -1,48 +1,71 @@
 import csv
+
 import stockstats
 import pandas as pd
 stuff = input("Start year: ")
-Startyear = int(stuff)
-while (Startyear > 2020):
-    print ("invalid year")
+while not stuff.isdigit() or 1996 > int(stuff) or int(stuff) > 2019:
+    print("invalid year")
     stuff = input("Start year: ")
-    Startyear = int(stuff)
+    continue
+Startyear = int(stuff)
 
 stuff = input("Start month: ")
-Startmonth = int(stuff)
-while (Startmonth > 12) or (Startmonth < 1):
-    print ("invalid month")
+while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 12:
+    print("invalid month")
     stuff = input("Start month: ")
-    Startmonth = int(stuff)
-
+    continue
+Startmonth = int(stuff)
 
 stuff = input("Start day: ")
-startday = int(stuff)
-while (startday > 31) or (startday < 1):
-    print ("invalid day")
-    stuff = input("Start day: ")
-    startday = int(stuff)
+if Startmonth == 1 or 3 or 5 or 7 or 8 or 10 or 12:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 31:
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+if Startmonth == 4 or 6 or 9 or 11:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 30:
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+if Startmonth == 2:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 28:
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+Startday = int(stuff)
 
+#end
 stuff = input("End year: ")
+while not stuff.isdigit() or Startyear > int(stuff) or int(stuff) > 2020:
+    print("invalid year")
+    stuff = input("End year: ")
+    continue
 Endyear = int(stuff)
-while (Endyear > 2020) or (Endyear < 1000) or (Endyear < Startyear):
-    print ("invalid Year \n")
-    stuff = input("End Year: ")
-    Endyear = int(stuff)
 
 stuff = input("End month: ")
-Endmonth = int(stuff)
-while (Endmonth > 12) or (Endmonth < 1) or ((Endyear == Startyear) and (Endmonth < Startmonth)):
-    print ("invalid month \n")
+while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 12 or (Endyear == Startyear and int(stuff) < Startmonth):
+    print("invalid month")
     stuff = input("End month: ")
-    Endmonth = int(stuff)
+    continue
+Endmonth = int(stuff)
 
 stuff = input("End day: ")
-Endday = int(stuff)
-while (Endday > 31) or (Endday < 1) or ((Endyear == Startyear) and (Endmonth == Startmonth) and (Endday < startday)):
-    print ("invalid day")
-    stuff = input("End day: ")
-    Endday = int(stuff)
+if Startmonth == 1 or 3 or 5 or 7 or 8 or 10 or 12:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 31 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+if Startmonth == 4 or 6 or 9 or 11:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 30 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+if Startmonth == 2:
+    while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 28 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
+        print("invalid day")
+        stuff = input("Start day: ")
+        continue
+Startday = int(stuff)
 
 
 print ("Getting data from {year}-{month}-{day}" .format(year=Startyear, month=Startmonth, day=startday))
@@ -52,7 +75,7 @@ Location = r'GE.csv'
 df = pd.read_csv(Location, header=None)
 df
 
-stock = StockDataFrame.retype(pd.read_csv('GE.csv'))
+stock = stockstats.StockDataFrame.retype(pd.read_csv('GE.csv'))
 
 
 
