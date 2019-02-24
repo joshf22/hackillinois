@@ -53,6 +53,3 @@ df = pd.read_csv(Location, header=None)
 df
 
 stock = StockDataFrame.retype(pd.read_csv('GE.csv'))
-
-
-
