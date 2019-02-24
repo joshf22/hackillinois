@@ -50,25 +50,25 @@ while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 12 or (Endyear == St
 Endmonth = int(stuff)
 
 stuff = input("End day: ")
-if Startmonth == 1 or 3 or 5 or 7 or 8 or 10 or 12:
+if Endmonth == 1 or 3 or 5 or 7 or 8 or 10 or 12:
     while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 31 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
         print("invalid day")
-        stuff = input("Start day: ")
+        stuff = input("End day: ")
         continue
-if Startmonth == 4 or 6 or 9 or 11:
+if Endmonth == 4 or 6 or 9 or 11:
     while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 30 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
         print("invalid day")
-        stuff = input("Start day: ")
+        stuff = input("End day: ")
         continue
-if Startmonth == 2:
+if Endmonth == 2:
     while not stuff.isdigit() or 1 > int(stuff) or int(stuff) > 28 or (Endyear==Startyear and Endmonth==Startmonth and int(stuff) < Startday):
         print("invalid day")
-        stuff = input("Start day: ")
+        stuff = input("End day: ")
         continue
-Startday = int(stuff)
+Endday = int(stuff)
 
 
-print ("Getting data from {year}-{month}-{day}" .format(year=Startyear, month=Startmonth, day=startday))
+print ("Getting data from {year}-{month}-{day}" .format(year=Startyear, month=Startmonth, day=Startday))
 print ("to {year}-{month}-{day}" .format(year=Endyear, month=Endmonth, day=Endday))
 
 Location = r'GE.csv'
